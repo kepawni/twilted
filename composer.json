@@ -1,0 +1,11 @@
+{
+    "name": "kepawni/twilted",
+    "type": "library",
+    "license": "GNU GPLv3",
+    "autoload": {
+        "psr-4": {
+            "Kepawni\\Twilted\\": "src/"
+        }
+    },
+    "require": {}
+}
