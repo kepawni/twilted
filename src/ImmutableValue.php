@@ -10,9 +10,9 @@ use RuntimeException;
  * that returns a deep copy of the instance which differs in that property being set to the new value. It is recommended
  * to use the documentation tags @​property-read and @​method to help IDEs providing intellisense capabilities anyway.
  *
- * CAUTION: The following example contains Zero-Width Space characters before slashes and after @ to prevent
- * interpretation of doctags and premature comment ending. For a more comfortable copy-and-paste experience this source
- * code can be found at the bottom of the file without those extra ZWS characters.
+ * CAUTION: The following example contains Zero-Width Space characters before / and after @ to prevent interpretation of
+ * doctags and premature comment ending. For a more comfortable copy-and-paste experience this source code can be found
+ * at the bottom of the file without those extra ZWS characters.
  *
  * Example:
  *
@@ -20,9 +20,9 @@ use RuntimeException;
  *      * @​property-read int $red
  *      * @​property-read int $green
  *      * @​property-read int $blue
- *      * @​method Color withRed(int $v)
- *      * @​method Color withGreen(int $v)
- *      * @​method Color withBlue(int $v)
+ *      * @​method self withRed(int $v)
+ *      * @​method self withGreen(int $v)
+ *      * @​method self withBlue(int $v)
  *      *​/
  *     final class Color extends ImmutableValue {
  *         public function __construct(int $red, int $green, int $blue) {
@@ -127,9 +127,9 @@ __halt_compiler();
  * @property-read int $red
  * @property-read int $green
  * @property-read int $blue
- * @method Color withRed(int $v)
- * @method Color withGreen(int $v)
- * @method Color withBlue(int $v)
+ * @method self withRed(int $v)
+ * @method self withGreen(int $v)
+ * @method self withBlue(int $v)
  */
 final class Color extends ImmutableValue {
     public function __construct(int $red, int $green, int $blue) {
