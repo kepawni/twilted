@@ -13,11 +13,11 @@ interface Windable
      *
      * @return static The instance reconstituted from unwinding the spool.
      */
-    static function unwind(array $spool): self;
+    public static function unwind(array $spool): self;
 
     /**
      * @return array A compact representation (like a spool) of this instance which can only contain simple types which
      *     includes compressed Foldable or Windable instances.
      */
-    function windUp(): array;
+    public function windUp(): array;
 }

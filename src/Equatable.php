@@ -11,5 +11,5 @@ interface Equatable
      *
      * @return bool True when the other value is equal to this instance.
      */
-    function equals($other): bool;
+    public function equals($other): bool;
 }
