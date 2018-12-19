@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
-namespace Kepawni\Twilted;
+namespace Kepawni\Twilted\Basic;
 
 use InvalidArgumentException;
+use Kepawni\Twilted\Equatable;
 use RuntimeException;
 
 /**
@@ -57,6 +58,7 @@ abstract class ImmutableValue implements Equatable
     /**
      * @param string $name
      * @param array $arguments
+     *
      * @return ImmutableValue
      * @throws RuntimeException
      */
@@ -84,6 +86,7 @@ abstract class ImmutableValue implements Equatable
 
     /**
      * @param string $name
+     *
      * @return mixed
      * @throws RuntimeException
      */
@@ -99,6 +102,7 @@ abstract class ImmutableValue implements Equatable
      * Checks whether this instance is equal to the given value.
      *
      * @param $other
+     *
      * @return bool
      */
     public function equals($other): bool
@@ -109,9 +113,10 @@ abstract class ImmutableValue implements Equatable
     /**
      * @param string $name
      * @param mixed $value
+     *
      * @throws InvalidArgumentException
      */
-    protected function init(string $name, $value)
+    protected function init(string $name, $value): void
     {
         if (array_key_exists($name, $this->data)) {
             throw new InvalidArgumentException(
