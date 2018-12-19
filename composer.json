@@ -9,5 +9,8 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^5.1"
+    },
+    "require": {
+        "mathiasverraes/classfunctions": "^1.1"
     }
 }
