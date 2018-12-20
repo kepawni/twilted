@@ -2,6 +2,7 @@
 hide empty members
 package \ <<internal>> {
     interface IteratorAggregate
+    interface DateTimeInterface
 }
 package Kepawni\Twilted {
     abstract AggregateRoot {
@@ -49,16 +50,27 @@ package Kepawni\Twilted {
     EntityReference ^-- DomainEvent
     Recordable ^-- DomainEvent
     EntityReference ^-- EntityHistory
-    EventStream ^--- EntityHistory
+    EventStream ^-- EntityHistory
     Equatable ^-- EntityIdentifier
     Foldable ^-- EntityIdentifier
     Equatable ^-- EventPayload
     Windable ^-- EventPayload
     IteratorAggregate ^-- EventStream
-    EntityReference ^--- IdentifiableEventSourceEntity
+    EntityReference ^-- IdentifiableEventSourceEntity
     EventSourcedEntity ^-- IdentifiableEventSourceEntity
 
-    Windable -d[hidden]- EventStream
-    Repository -u[hidden]- DomainEvent
+    EventPayload <--o DataCarrier
+    EntityIdentifier <--o EntityReference
+    EventStream <--o EventSourcedEntity
+    DomainEvent <--o EventStream
+    DateTimeInterface <--o Recordable
+    EventSourcedEntity <-- Repository
+    DomainEvent <.. AggregateRoot
+    EventPayload <.. AggregateRoot
+    EntityHistory <.. EventSourcedEntity
+    EntityIdentifier <.. Repository
+    IdentifiableEventSourceEntity <.. Repository
+
+    DateTimeInterface -[hidden]- IteratorAggregate
 }
 @enduml
