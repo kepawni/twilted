@@ -1,0 +1,18 @@
+{
+    "name": "kepawni/twilted",
+    "type": "library",
+    "license": "GNU GPLv3",
+    "autoload": {
+        "psr-4": {
+            "Kepawni\\Twilted\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^5.1"
+    },
+    "require": {
+        "beberlei/assert": "^3.1",
+        "mathiasverraes/classfunctions": "^1.1",
+        "ramsey/uuid": "^3.8"
+    }
+}
