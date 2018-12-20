@@ -36,6 +36,10 @@ package Kepawni\Twilted {
     interface Recordable {
         +getRecordedOn():DateTimeInterface
     }
+    interface Repository {
+        +load(:EntityIdentifier):EventSourcedEntity
+        +save(:IdentifiableEventSourceEntity):void
+    }
     interface Windable {
         {static} +unwind(:array):Windable
         +windUp():array
@@ -55,5 +59,6 @@ package Kepawni\Twilted {
     EventSourcedEntity ^-- IdentifiableEventSourceEntity
 
     Windable -d[hidden]- EventStream
+    Repository -u[hidden]- DomainEvent
 }
 @enduml
