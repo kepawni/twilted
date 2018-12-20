@@ -32,6 +32,7 @@ package Kepawni\Twilted {
         {static} +unfold(:string):Foldable
         +fold():string
     }
+    interface IdentifiableEventSourceEntity
     interface Recordable {
         +getRecordedOn():DateTimeInterface
     }
@@ -39,17 +40,20 @@ package Kepawni\Twilted {
         {static} +unwind(:array):Windable
         +windUp():array
     }
-    EntityReference ^.. AggregateRoot
-    EventSourcedEntity ^... AggregateRoot
+    IdentifiableEventSourceEntity ^.. AggregateRoot
     DataCarrier ^-- DomainEvent
-    EntityReference ^--- DomainEvent
+    EntityReference ^-- DomainEvent
     Recordable ^-- DomainEvent
     EntityReference ^-- EntityHistory
-    EventStream ^-- EntityHistory
+    EventStream ^--- EntityHistory
     Equatable ^-- EntityIdentifier
     Foldable ^-- EntityIdentifier
     Equatable ^-- EventPayload
     Windable ^-- EventPayload
     IteratorAggregate ^-- EventStream
+    EntityReference ^--- IdentifiableEventSourceEntity
+    EventSourcedEntity ^-- IdentifiableEventSourceEntity
+
+    Windable -d[hidden]- EventStream
 }
 @enduml
