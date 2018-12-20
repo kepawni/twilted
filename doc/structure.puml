@@ -1,42 +1,43 @@
 @startuml
+hide empty members
 package \ <<internal>> {
     interface IteratorAggregate
 }
 package Kepawni\Twilted {
     abstract AggregateRoot {
-        {abstract} #apply(:DomainEvent): void
-        {abstract} #recordThat(:EventPayload): void
+        {abstract} #apply(:DomainEvent):void
+        {abstract} #recordThat(:EventPayload):void
     }
     interface DataCarrier {
-        +getPayload(): EventPayload
+        +getPayload():EventPayload
     }
     interface DomainEvent
     interface EntityHistory
     interface EntityIdentifier
     interface EntityReference {
-        +getId(): EntityIdentifier
+        +getId():EntityIdentifier
     }
     interface Equatable {
-        +equals(:mixed): bool
+        +equals(:mixed):bool
     }
     interface EventPayload
     interface EventSourcedEntity {
-        {static} +reconstituteFrom(:EntityHistory): EventSourcedEntity
-        +getRecordedEvents(): EventStream
+        {static} +reconstituteFrom(:EntityHistory):EventSourcedEntity
+        +getRecordedEvents():EventStream
     }
     interface EventStream {
-        +getIterator(): Traversable<DomainEvent>
+        +getIterator():Traversable<DomainEvent>
     }
     interface Foldable {
-        {static} +unfold(:string): Foldable
-        +fold(): string
+        {static} +unfold(:string):Foldable
+        +fold():string
     }
     interface Recordable {
-        +getRecordedOn(): DateTimeInterface
+        +getRecordedOn():DateTimeInterface
     }
     interface Windable {
-        {static} +unwind(:array): Windable
-        +windUp(): array
+        {static} +unwind(:array):Windable
+        +windUp():array
     }
     EntityReference ^.. AggregateRoot
     EventSourcedEntity ^... AggregateRoot
