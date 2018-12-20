@@ -29,6 +29,10 @@ package Kepawni\Twilted {
         {static} +reconstituteFrom(:EntityHistory):EventSourcedEntity
         +getRecordedEvents():EventStream
     }
+    interface EventStore {
+        +append(:EventStream):void
+        +retrieve(:EntityIdentifier):EventStream
+    }
     interface EventStream {
         +getIterator():Traversable<DomainEvent>
     }
@@ -70,8 +74,10 @@ package Kepawni\Twilted {
     EventSourcedEntity <-- Repository
     DomainEvent <.. AggregateRoot
     EventPayload <.. AggregateRoot
-    EventStream <.. EventBus
+    EventStream <... EventBus
     EntityHistory <.. EventSourcedEntity
+    EntityIdentifier <... EventStore
+    EventStream <.. EventStore
     EntityIdentifier <.. Repository
     IdentifiableEventSourceEntity <.. Repository
 
