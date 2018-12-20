@@ -1,0 +1,101 @@
+@startuml
+!define trait <<(T, #ddbb99)>>
+hide empty members
+package Kepawni\Twilted {
+    interface DomainEvent
+    interface EntityIdentifier
+    interface Equatable
+    interface EventStream
+    abstract AggregateRoot
+}
+package Kepawni\Twilted\Basic {
+    class AggregateUuid {
+        -uuid:UuidInterface
+        -__construct(:UuidInterface)
+        {static} +createRandom():self
+        {static} +unfold(:string):Foldable
+        +equals(:mixed):bool
+        +fold():string
+    }
+    class ImmutableValue {
+        +<<name>>:mixed {readonly}
+        #init(:string, :mixed):void
+        +equals(:mixed):bool
+        +with<<Name>>(:mixed):ImmutableValue
+    }
+    class SimpleDomainEvent {
+        -entityId:EntityIdentifier
+        -payload:EventPayload
+        -recordedOn:DateTimeInterface
+        +__construct(:EventPayload, :EntityIdentifier, :DateTimeInterface)
+        +getId():EntityIdentifier
+        +getPayload():EventPayload
+        +getRecordedOn():DateTimeInterface
+    }
+    class SimpleEventStream {
+        -events:array
+        +__construct(:array)
+        +getIterator():Traversable<DomainEvent>
+    }
+    class EqualsUsesWindUp trait {
+        +equals(:mixed):bool
+    }
+    class ApplyCallsWhenMethod trait {
+        #apply(:DomainEvent):void
+        {abstract} #when<<PayloadType>>(:EventPayload):void
+    }
+    class GetRecordedEventsIsConfigurable trait {
+        {static} #eventStreamClass = SimpleEventStream::class;
+        #recordedEvents = [];
+        +getRecordedEvents():EventStream
+    }
+    class IdentificationIsTrivial trait {
+        -id:EntityIdentifier;
+        #__construct(:EntityIdentifier)
+        +getId():EntityIdentifier
+    }
+    class ReconstituteFromIsSimple trait {
+        {abstract} #__construct(:EntityIdentifier)
+        {static} +reconstituteFrom(:EntityHistory):EventSourcedEntity
+    }
+    class RecordThatUsesConfigurableFactories trait {
+        {static} #dateTimeClass = DateTimeImmutable::class
+        {static} #domainEventClass = SimpleDomainEvent::class
+        {static} #timeZoneClass = DateTimeZone::class
+        #recordedEvents = []
+        {abstract} +getId():EntityIdentifier
+        {abstract} #apply(:DomainEvent):void
+        #createDateTimeInterfaceForNow():DateTimeInterface
+        #createDomainEvent(:EventPayload, :DateTimeInterface):SimpleDomainEvent
+        #recordThat(:EventPayload):void
+    }
+    abstract SimpleAggregateRoot
+
+    EntityIdentifier ^.. AggregateUuid
+    Equatable ^.. ImmutableValue
+    EventStream ^.. SimpleEventStream
+    DomainEvent ^.. SimpleDomainEvent
+    AggregateRoot ^-- SimpleAggregateRoot
+    ApplyCallsWhenMethod --* SimpleAggregateRoot
+    GetRecordedEventsIsConfigurable --* SimpleAggregateRoot
+    IdentificationIsTrivial --* SimpleAggregateRoot
+    ReconstituteFromIsSimple --* SimpleAggregateRoot
+    RecordThatUsesConfigurableFactories -* SimpleAggregateRoot
+
+    EqualsUsesWindUp -[hidden]- ApplyCallsWhenMethod
+    ApplyCallsWhenMethod -[hidden]- GetRecordedEventsIsConfigurable
+    GetRecordedEventsIsConfigurable -[hidden]- IdentificationIsTrivial
+    IdentificationIsTrivial -[hidden]- ReconstituteFromIsSimple
+    ReconstituteFromIsSimple -[hidden]- RecordThatUsesConfigurableFactories
+
+    EntityIdentifier -[hidden]- Equatable
+    Equatable -[hidden]- EventStream
+    EventStream -[hidden]- DomainEvent
+    DomainEvent -[hidden]- AggregateRoot
+
+    AggregateUuid -[hidden]- ImmutableValue
+    ImmutableValue -[hidden]- SimpleEventStream
+    SimpleEventStream -[hidden]- SimpleDomainEvent
+    SimpleDomainEvent -[hidden]- SimpleAggregateRoot
+}
+@enduml
