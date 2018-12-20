@@ -21,6 +21,9 @@ package Kepawni\Twilted {
     interface Equatable {
         +equals(:mixed):bool
     }
+    interface EventBus {
+        +dispatch(:EventStream):void
+    }
     interface EventPayload
     interface EventSourcedEntity {
         {static} +reconstituteFrom(:EntityHistory):EventSourcedEntity
@@ -67,6 +70,7 @@ package Kepawni\Twilted {
     EventSourcedEntity <-- Repository
     DomainEvent <.. AggregateRoot
     EventPayload <.. AggregateRoot
+    EventStream <.. EventBus
     EntityHistory <.. EventSourcedEntity
     EntityIdentifier <.. Repository
     IdentifiableEventSourceEntity <.. Repository
