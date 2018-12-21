@@ -9,5 +9,5 @@ interface Repository
 {
     public function load(EntityIdentifier $identifier): EventSourcedEntity;
 
-    public function save(IdentifiableEventSourceEntity $entity): void;
+    public function save(IdentifiableEventSourcedEntity $entity): void;
 }

@@ -15,7 +15,7 @@ use Kepawni\Twilted\EventBus;
 use Kepawni\Twilted\EventSourcedEntity;
 use Kepawni\Twilted\EventStore;
 use Kepawni\Twilted\EventStream;
-use Kepawni\Twilted\IdentifiableEventSourceEntity;
+use Kepawni\Twilted\IdentifiableEventSourcedEntity;
 use Kepawni\Twilted\Repository;
 use PhpSpec\ObjectBehavior;
 
@@ -41,7 +41,7 @@ class SimpleRepositorySpec extends ObjectBehavior
         $this->load($aggregateUuid)->shouldBeAnInstanceOf(ShoppingBasket::class);
     }
 
-    function it_can_save_an_entity(IdentifiableEventSourceEntity $aggregate, EntityIdentifier $id, EventStore $eventStore, EventStream $stream)
+    function it_can_save_an_entity(IdentifiableEventSourcedEntity $aggregate, EntityIdentifier $id, EventStore $eventStore, EventStream $stream)
     {
         $aggregate->getId()->willReturn($id);
         $aggregate->getRecordedEvents()->willReturn($stream);

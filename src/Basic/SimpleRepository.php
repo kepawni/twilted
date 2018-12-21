@@ -7,7 +7,7 @@ use Kepawni\Twilted\EntityIdentifier;
 use Kepawni\Twilted\EventBus;
 use Kepawni\Twilted\EventSourcedEntity;
 use Kepawni\Twilted\EventStore;
-use Kepawni\Twilted\IdentifiableEventSourceEntity;
+use Kepawni\Twilted\IdentifiableEventSourcedEntity;
 use Kepawni\Twilted\Repository;
 
 class SimpleRepository implements Repository
@@ -35,7 +35,7 @@ class SimpleRepository implements Repository
         return $this->entityClass::reconstituteFrom($aggregateHistory);
     }
 
-    public function save(IdentifiableEventSourceEntity $entity): void
+    public function save(IdentifiableEventSourcedEntity $entity): void
     {
         $eventStream = $entity->getRecordedEvents();
         $this->eventStore->append($eventStream);
