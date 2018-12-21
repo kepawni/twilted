@@ -4,6 +4,8 @@ CQRS and Event Sourcing—The Way I Like To Engineer Domains
 ## Status
 
 [![Build Status](https://travis-ci.org/kepawni/twilted.svg)](https://travis-ci.org/kepawni/twilted)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kepawni/twilted/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/kepawni/twilted/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/kepawni/twilted/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 [read more...](doc/status.md)
 

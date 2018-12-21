@@ -2,6 +2,11 @@
 
 # Status
 
+## Scrutinizer CI
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/kepawni/twilted/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/kepawni/twilted/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/kepawni/twilted/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+## Travis CI
 Branch | Travis CI status
 -----: | :---
 master | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=master)](https://travis-ci.org/kepawni/twilted)
