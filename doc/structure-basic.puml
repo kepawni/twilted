@@ -3,9 +3,11 @@
 hide empty members
 package Kepawni\Twilted {
     interface DomainEvent
+    interface EntityHistory
     interface EntityIdentifier
     interface Equatable
     interface EventStream
+    interface Repository
     abstract AggregateRoot
 }
 package Kepawni\Twilted\Basic {
@@ -23,6 +25,13 @@ package Kepawni\Twilted\Basic {
         +equals(:mixed):bool
         +with<<Name>>(:mixed):ImmutableValue
     }
+    class SimpleAggregateHistory {
+        -events:EventStream
+        -id:EntityIdentifier
+        +__construct(:EntityIdentifier, :EventStream)
+        +getId():EntityIdentifier
+        +getIterator():Traversable<DomainEvent>
+    }
     class SimpleDomainEvent {
         -entityId:EntityIdentifier
         -payload:EventPayload
@@ -36,6 +45,16 @@ package Kepawni\Twilted\Basic {
         -events:array
         +__construct(:array)
         +getIterator():Traversable<DomainEvent>
+    }
+    class SimpleRepository
+    {
+        -entityClass:string|EventSourcedEntity
+        -eventBus:EventBus
+        -eventStore:EventStore
+        -historyClass:string|EntityHistory
+        +__construct(:string, :EventBus, :EventStore, :string=SimpleAggregateHistory::class)
+        +load(:EntityIdentifier):EventSourcedEntity
+        +save(:IdentifiableEventSourcedEntity):void
     }
     class EqualsUsesWindUp trait {
         +equals(:mixed):bool
@@ -73,14 +92,16 @@ package Kepawni\Twilted\Basic {
 
     EntityIdentifier ^.. AggregateUuid
     Equatable ^.. ImmutableValue
+    EntityHistory ^.. SimpleAggregateHistory
     EventStream ^.. SimpleEventStream
     DomainEvent ^.. SimpleDomainEvent
+    Repository ^.. SimpleRepository
     AggregateRoot ^-- SimpleAggregateRoot
     ApplyCallsWhenMethod --* SimpleAggregateRoot
     GetRecordedEventsIsConfigurable --* SimpleAggregateRoot
     IdentificationIsTrivial --* SimpleAggregateRoot
     ReconstituteFromIsSimple --* SimpleAggregateRoot
-    RecordThatUsesConfigurableFactories -* SimpleAggregateRoot
+    RecordThatUsesConfigurableFactories --* SimpleAggregateRoot
 
     EqualsUsesWindUp -[hidden]- ApplyCallsWhenMethod
     ApplyCallsWhenMethod -[hidden]- GetRecordedEventsIsConfigurable
@@ -88,14 +109,19 @@ package Kepawni\Twilted\Basic {
     IdentificationIsTrivial -[hidden]- ReconstituteFromIsSimple
     ReconstituteFromIsSimple -[hidden]- RecordThatUsesConfigurableFactories
 
+    Repository -[hidden]- EntityHistory
+    EntityHistory -[hidden]- EntityIdentifier
     EntityIdentifier -[hidden]- Equatable
     Equatable -[hidden]- EventStream
     EventStream -[hidden]- DomainEvent
     DomainEvent -[hidden]- AggregateRoot
 
+    SimpleRepository -[hidden]- SimpleAggregateHistory
+    SimpleAggregateHistory -[hidden]- AggregateUuid
     AggregateUuid -[hidden]- ImmutableValue
     ImmutableValue -[hidden]- SimpleEventStream
     SimpleEventStream -[hidden]- SimpleDomainEvent
     SimpleDomainEvent -[hidden]- SimpleAggregateRoot
+    EqualsUsesWindUp -[hidden]- RecordThatUsesConfigurableFactories
 }
 @enduml
