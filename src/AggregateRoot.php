@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace Kepawni\Twilted;
 
-abstract class AggregateRoot implements EntityReference, EventSourcedEntity
+abstract class AggregateRoot implements IdentifiableEventSourcedEntity
 {
     /**
      * Applies the event (no matter what, because it has happened already) and update the internal state of this
