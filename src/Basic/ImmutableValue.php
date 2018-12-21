@@ -25,8 +25,10 @@ use RuntimeException;
  *      * @​method self withGreen(int $v)
  *      * @​method self withBlue(int $v)
  *      *​/
- *     final class Color extends ImmutableValue {
- *         public function __construct(int $red, int $green, int $blue) {
+ *     final class Color extends ImmutableValue
+ *     {
+ *         public function __construct(int $red, int $green, int $blue)
+ *         {
  *             $this->init('red', $red);
  *             $this->init('green', $green);
  *             $this->init('blue', $blue);
@@ -158,8 +160,10 @@ __halt_compiler();
  * @method self withGreen(int $v)
  * @method self withBlue(int $v)
  */
-final class Color extends ImmutableValue {
-    public function __construct(int $red, int $green, int $blue) {
+final class Color extends ImmutableValue
+{
+    public function __construct(int $red, int $green, int $blue)
+    {
         $this->init('red', $red);
         $this->init('green', $green);
         $this->init('blue', $blue);
