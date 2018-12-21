@@ -37,22 +37,44 @@ abstract class ImmutableValue implements Equatable
 {
     private $data = [];
 
+    private static function areArraysAndEqual($a, $b): bool
+    {
+        return self::areArraysAndSameSized($a, $b) && count($a) === self::countEqualValuesInArrays($a, $b);
+    }
+
+    private static function areArraysAndSameSized($a, $b): bool
+    {
+        return is_array($a) && is_array($b) && count($a) === count($b);
+    }
+
+    private static function areInstancesAndEqual($a, $b): bool
+    {
+        return $a instanceof self && $a->equals($b);
+    }
+
+    private static function cloneArray($value): array
+    {
+        return array_map([self::class, 'cloneValue'], $value);
+    }
+
+    private static function cloneIfObject($value)
+    {
+        return is_object($value) ? clone $value : $value;
+    }
+
     private static function cloneValue($value)
     {
-        return is_array($value)
-            ? array_map([self::class, 'cloneValue'], $value)
-            : (is_object($value)
-                ? clone $value
-                : $value
-            );
+        return is_array($value) ? self::cloneArray($value) : self::cloneIfObject($value);
+    }
+
+    private static function countEqualValuesInArrays($a, $b): int
+    {
+        return count(array_filter(array_map([self::class, 'isEqual'], $a, $b)));
     }
 
     private static function isEqual($a, $b): bool
     {
-        return $a === $b
-            || is_array($a) && is_array($b) && count($a) === count($b)
-            && count($a) === count(array_filter(array_map([self::class, 'isEqual'], $a, $b)))
-            || $a instanceof self && $a->equals($b);
+        return $a === $b || self::areArraysAndEqual($a, $b) || self::areInstancesAndEqual($a, $b);
     }
 
     /**
