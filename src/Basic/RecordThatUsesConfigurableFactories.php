@@ -22,15 +22,9 @@ trait RecordThatUsesConfigurableFactories
 
     protected function createDateTimeInterfaceForNow(): DateTimeInterface
     {
-        $now = null;
         $timeZoneClass = self::$timeZoneClass;
         $dateTimeClass = self::$dateTimeClass;
-        try {
-            $now = new $dateTimeClass('now', new $timeZoneClass('UTC'));
-        } catch (Exception $e) {
-            // cannot happen
-        }
-        return $now;
+        return new $dateTimeClass('now', new $timeZoneClass('UTC'));
     }
 
     protected function createDomainEvent(EventPayload $what, DateTimeInterface $when): SimpleDomainEvent
