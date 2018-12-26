@@ -9,5 +9,5 @@ script:
 - vendor/bin/phpspec run -v
 branches:
     only:
-    - master
+    - dev
     - /^v\d+(\.\d+)*($|-)/
