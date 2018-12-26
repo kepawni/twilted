@@ -8,6 +8,7 @@
         }
     },
     "require-dev": {
+        "ext-xdebug": "*",
         "leanphp/phpspec-code-coverage": "^5.0",
         "phpspec/phpspec": "^5.1"
     },
