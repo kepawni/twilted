@@ -25,4 +25,9 @@ It is important to eliminate side effects, which also means waving good-bye to s
 
 ### Project structure
 
+The core namespace \Kepawni\Twilted contains nothing but essential interfaces and an abstract class.
+
+However, some basic convenience classes that can be used as an out-of-the-box solution can be found in \Kepawni\Twilted\Basic. These rely heavily on traits to cater for easy reuse while causing minimal coding.
+
+
 [read more...](doc/structure.md)
