@@ -1,18 +1,32 @@
 {
     "name": "kepawni/twilted",
+    "description": "A strictly typed PHP 7 CQRS/ES library/framework suited for PhpSpec and striving for highest IDE intellisense comfort",
+    "keywords": [
+        "CQRS",
+        "event sourcing",
+        "PhpSpec"
+    ],
     "type": "library",
-    "license": "GNU GPLv3",
+    "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
             "Kepawni\\Twilted\\": "src/"
         }
     },
     "require-dev": {
+        "ext-xdebug": "*",
+        "leanphp/phpspec-code-coverage": "^5.0",
         "phpspec/phpspec": "^5.1"
     },
     "require": {
         "beberlei/assert": "^3.1",
         "mathiasverraes/classfunctions": "^1.1",
         "ramsey/uuid": "^3.8"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lingoda/phpspec-code-coverage.git"
+        }
+    ]
 }

@@ -2,12 +2,11 @@ language: php
 php:
 - 7.1
 - 7.2
-- 7.3
 before_script:
 - composer install
 script:
 - vendor/bin/phpspec run -v
 branches:
     only:
-    - master
+    - dev
     - /^v\d+(\.\d+)*($|-)/
