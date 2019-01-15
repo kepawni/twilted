@@ -17,6 +17,12 @@ Instead of relying on PHP's built-in serialization format on the one hand or enf
 
 [read more...](doc/serializing-instances.md)
 
+### Immutability
+
+It is important to eliminate side effects, which also means waving good-bye to setters. For configuring complex instances we use with…($value) methods that can be chained and always return a new instance.
+
+[read more...](doc/immutability.md)
+
 ### Project structure
 
 [read more...](doc/structure.md)
