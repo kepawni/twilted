@@ -12,4 +12,6 @@ trait EqualsUsesWindUp
     {
         return $other instanceof static && $this->windUp() === $other->windUp();
     }
+
+    abstract public function windUp(): array;
 }
