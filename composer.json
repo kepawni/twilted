@@ -1,5 +1,11 @@
 {
     "name": "kepawni/twilted",
+    "description": "A strictly typed PHP 7 CQRS/ES library/framework suited for PhpSpec and striving for highest IDE intellisense comfort",
+    "keywords": [
+        "CQRS",
+        "event sourcing",
+        "PhpSpec"
+    ],
     "type": "library",
     "license": "GNU GPLv3",
     "autoload": {
