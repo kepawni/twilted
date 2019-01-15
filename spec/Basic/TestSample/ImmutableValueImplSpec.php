@@ -2,10 +2,12 @@
 namespace spec\Kepawni\Twilted\Basic\TestSample;
 
 use DateTime;
+use DateTimeInterface;
 use Kepawni\Twilted\Basic\ImmutableValue;
 use Kepawni\Twilted\Basic\TestSample\ImmutableValueImpl;
 use Kepawni\Twilted\Equatable;
 use PhpSpec\ObjectBehavior;
+use RuntimeException;
 
 class ImmutableValueImplSpec extends ObjectBehavior
 {
@@ -29,6 +31,25 @@ class ImmutableValueImplSpec extends ObjectBehavior
             'dateTime' => new DateTime('2018-10-30T01:51:33Z'),
             'string' => 'x'
         ]);
+    }
+
+    function it_exposes_the_properties()
+    {
+        $this->array->shouldBe([]);
+        $this->string->shouldBe('');
+        $this->dateTime->shouldBeAnInstanceOf(DateTimeInterface::class);
+    }
+
+    function it_prevents_mutation_of_the_properties()
+    {
+        $this->shouldThrow()->during__set('string', 'newValue');
+        $this->shouldThrow(RuntimeException::class)->duringWithFoo('bar');
+    }
+
+    function it_throws_exceptions_when_calling_unregistered_methods()
+    {
+        $this->shouldThrow(RuntimeException::class)->duringDoStuff();
+        $this->shouldThrow(RuntimeException::class)->duringWithFoo('bar');
     }
 
     function it_configures_a_new_instance()
