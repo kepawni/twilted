@@ -17,6 +17,17 @@ Instead of relying on PHP's built-in serialization format on the one hand or enf
 
 [read more...](doc/serializing-instances.md)
 
+### Immutability
+
+It is important to eliminate side effects, which also means waving good-bye to setters. For configuring complex instances we use with…($value) methods that can be chained and always return a new instance.
+
+[read more...](doc/immutability.md)
+
 ### Project structure
+
+The core namespace \Kepawni\Twilted contains nothing but essential interfaces and an abstract class.
+
+However, some basic convenience classes that can be used as an out-of-the-box solution can be found in \Kepawni\Twilted\Basic. These rely heavily on traits to cater for easy reuse while causing minimal coding.
+
 
 [read more...](doc/structure.md)

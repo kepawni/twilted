@@ -9,7 +9,9 @@
 ## Travis CI
 Branch | Travis CI status
 -----: | :---
-master | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=master)](https://travis-ci.org/kepawni/twilted)
+dev | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=dev)](https://travis-ci.org/kepawni/twilted)
+v1.1.3 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.3)](https://travis-ci.org/kepawni/twilted)
+v1.1.2 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.2)](https://travis-ci.org/kepawni/twilted)
 v1.1.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.1)](https://travis-ci.org/kepawni/twilted)
 v1.1.0 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.0)](https://travis-ci.org/kepawni/twilted)
 v1.0.2 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.2)](https://travis-ci.org/kepawni/twilted)
@@ -26,6 +28,12 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
   32  ✔ doesnt equal an instance with another UUID
   38  ✔ equals another instance based on the same UUID
 
+      Kepawni\Twilted\Basic\SimpleAggregateHistory
+
+  16  ✔ is initializable
+  23  ✔ iterates domain events
+  31  ✔ provides the ID
+
       Kepawni\Twilted\Basic\SimpleDomainEvent
 
   12  ✔ is initializable
@@ -38,27 +46,36 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
   12  ✔ is initializable
   18  ✔ provides an iterator
 
+      Kepawni\Twilted\Basic\SimpleRepository
+
+  24  ✔ can load an entity
+  44  ✔ can save an entity
+  52  ✔ is initializable
+
       Kepawni\Twilted\Basic\TestSample\ImmutableValueImpl
 
-  12  ✔ breaks object references
-  34  ✔ configures a new instance
-  41  ✔ equals an instance with equal data
-  47  ✔ is initializable
+  14  ✔ breaks object references
+  36  ✔ exposes the properties
+  43  ✔ prevents mutation of the properties
+  49  ✔ throws exceptions when calling unregistered methods
+  55  ✔ configures a new instance
+  62  ✔ equals an instance with equal data
+  68  ✔ is initializable
 
       Kepawni\Twilted\Basic\TestSample\ShoppingBasket
 
-  80  ✔ allows checkout with at least one item
-  91  ✔ allows quick checkout for returning customers
+  80  ✔ allows checkout with at least one item (64ms)
+  91  ✔ allows quick checkout for returning customers (71ms)
  103  ✔ can be instantiated when picked up by a new customer
  111  ✔ can be instantiated when picked up by a returning customer
- 120  ✔ prevents adding items after checkout
+ 120  ✔ prevents adding items after checkout (68ms)
  132  ✔ prevents checkout without items
- 140  ✔ prevents quick checkout for new customers
+ 140  ✔ prevents quick checkout for new customers (52ms)
  150  ✔ provides the entity ID
  155  ✔ starts off with one recorded event
 
 
-5 specs
-24 examples (24 passed)
-194ms
+7 specs
+33 examples (33 passed)
+1292ms
 ```
