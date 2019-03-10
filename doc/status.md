@@ -49,7 +49,7 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
       Kepawni\Twilted\Basic\SimpleRepository
 
   24  ✔ can load an entity
-  44  ✔ can save an entity
+  44  ✔ can save an entity (53ms)
   52  ✔ is initializable
 
       Kepawni\Twilted\Basic\TestSample\ImmutableValueImpl
@@ -64,18 +64,23 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 
       Kepawni\Twilted\Basic\TestSample\ShoppingBasket
 
-  80  ✔ allows checkout with at least one item (64ms)
-  91  ✔ allows quick checkout for returning customers (71ms)
+  80  ✔ allows checkout with at least one item (71ms)
+  91  ✔ allows quick checkout for returning customers (74ms)
  103  ✔ can be instantiated when picked up by a new customer
  111  ✔ can be instantiated when picked up by a returning customer
- 120  ✔ prevents adding items after checkout (68ms)
- 132  ✔ prevents checkout without items
- 140  ✔ prevents quick checkout for new customers (52ms)
+ 120  ✔ prevents adding items after checkout (71ms)
+ 132  ✔ prevents checkout without items (52ms)
+ 140  ✔ prevents quick checkout for new customers (56ms)
  150  ✔ provides the entity ID
  155  ✔ starts off with one recorded event
 
+      Kepawni\Twilted\Basic\TestSample\SimpleCommandHandlerImpl
 
-7 specs
-33 examples (33 passed)
-1292ms
+  12  ✔ is initializable
+  17  ✔ uses the repository when handling a command
+
+
+8 specs
+35 examples (35 passed)
+1460ms
 ```
