@@ -32,6 +32,11 @@ package Kepawni\Twilted\Basic {
         +getId():EntityIdentifier
         +getIterator():Traversable<DomainEvent>
     }
+    abstract SimpleCommandHandler {
+        +__construct(:Repository)
+        #loadFromRepository(:EntityIdentifier):EventSourcedEntity
+        #saveToRepository(:IdentifiableEventSourcedEntity):void
+    }
     class SimpleDomainEvent {
         -entityId:EntityIdentifier
         -payload:EventPayload
@@ -122,6 +127,7 @@ package Kepawni\Twilted\Basic {
     ImmutableValue -[hidden]- SimpleEventStream
     SimpleEventStream -[hidden]- SimpleDomainEvent
     SimpleDomainEvent -[hidden]- SimpleAggregateRoot
+    RecordThatUsesConfigurableFactories -[hidden]- SimpleCommandHandler
     EqualsUsesWindUp -[hidden]- RecordThatUsesConfigurableFactories
 }
 @enduml

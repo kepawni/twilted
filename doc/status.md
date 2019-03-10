@@ -10,6 +10,8 @@
 Branch | Travis CI status
 -----: | :---
 dev | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=dev)](https://travis-ci.org/kepawni/twilted)
+v1.1.5 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.5)](https://travis-ci.org/kepawni/twilted)
+v1.1.4 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.4)](https://travis-ci.org/kepawni/twilted)
 v1.1.3 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.3)](https://travis-ci.org/kepawni/twilted)
 v1.1.2 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.2)](https://travis-ci.org/kepawni/twilted)
 v1.1.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.1)](https://travis-ci.org/kepawni/twilted)
@@ -20,6 +22,7 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 ## PhpSpec results
 
 ```
+
       Kepawni\Twilted\Basic\AggregateUuid
 
   12  ✔ can be created from a UUID string
@@ -64,18 +67,23 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 
       Kepawni\Twilted\Basic\TestSample\ShoppingBasket
 
-  80  ✔ allows checkout with at least one item (64ms)
-  91  ✔ allows quick checkout for returning customers (71ms)
+  80  ✔ allows checkout with at least one item
+  91  ✔ allows quick checkout for returning customers
  103  ✔ can be instantiated when picked up by a new customer
  111  ✔ can be instantiated when picked up by a returning customer
- 120  ✔ prevents adding items after checkout (68ms)
+ 120  ✔ prevents adding items after checkout
  132  ✔ prevents checkout without items
- 140  ✔ prevents quick checkout for new customers (52ms)
+ 140  ✔ prevents quick checkout for new customers
  150  ✔ provides the entity ID
  155  ✔ starts off with one recorded event
 
+      Kepawni\Twilted\Basic\TestSample\SimpleCommandHandlerImpl
 
-7 specs
-33 examples (33 passed)
-1292ms
+  12  ✔ is initializable
+  17  ✔ uses the repository when handling a command
+
+
+8 specs
+35 examples (35 passed)
+249ms
 ```
