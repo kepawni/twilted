@@ -22,5 +22,11 @@
         "beberlei/assert": "^3.1",
         "mathiasverraes/classfunctions": "^1.1",
         "ramsey/uuid": "^3.8"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lingoda/phpspec-code-coverage.git"
+        }
+    ]
 }
