@@ -22,6 +22,7 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 ## PhpSpec results
 
 ```
+
       Kepawni\Twilted\Basic\AggregateUuid
 
   12  ✔ can be created from a UUID string
@@ -51,7 +52,7 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
       Kepawni\Twilted\Basic\SimpleRepository
 
   24  ✔ can load an entity
-  44  ✔ can save an entity (53ms)
+  44  ✔ can save an entity
   52  ✔ is initializable
 
       Kepawni\Twilted\Basic\TestSample\ImmutableValueImpl
@@ -66,13 +67,13 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 
       Kepawni\Twilted\Basic\TestSample\ShoppingBasket
 
-  80  ✔ allows checkout with at least one item (71ms)
-  91  ✔ allows quick checkout for returning customers (74ms)
+  80  ✔ allows checkout with at least one item
+  91  ✔ allows quick checkout for returning customers
  103  ✔ can be instantiated when picked up by a new customer
  111  ✔ can be instantiated when picked up by a returning customer
- 120  ✔ prevents adding items after checkout (71ms)
- 132  ✔ prevents checkout without items (52ms)
- 140  ✔ prevents quick checkout for new customers (56ms)
+ 120  ✔ prevents adding items after checkout
+ 132  ✔ prevents checkout without items
+ 140  ✔ prevents quick checkout for new customers
  150  ✔ provides the entity ID
  155  ✔ starts off with one recorded event
 
@@ -84,5 +85,5 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 
 8 specs
 35 examples (35 passed)
-1460ms
+249ms
 ```
