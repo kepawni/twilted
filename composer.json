@@ -16,7 +16,7 @@
     "require-dev": {
         "ext-xdebug": "*",
         "leanphp/phpspec-code-coverage": "^5.0",
-        "phpspec/phpspec": "^5.1"
+        "phpspec/phpspec": "^4.3"
     },
     "require": {
         "beberlei/assert": "^3.1",
