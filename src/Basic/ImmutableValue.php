@@ -89,7 +89,7 @@ abstract class ImmutableValue implements Equatable
     public function __call(string $name, array $arguments)
     {
         if (strlen($name) > 4 && substr($name, 0, 4) === 'with' && count($arguments) === 1) {
-            $memberName = strtolower($name{4}) . substr($name, 5);
+            $memberName = strtolower($name[4]) . substr($name, 5);
             if (array_key_exists($memberName, $this->data)) {
                 $value = self::cloneValue($arguments[0]);
                 $result = clone $this;
