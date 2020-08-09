@@ -17,11 +17,12 @@ class ImmutableValueImplSpec extends ObjectBehavior
         $b = &$a;
         $dateTime = new DateTime('2018-10-30T01:51:33Z');
         $array = [&$dateTime, $dateTime, &$b];
-        $this->beConstructedWith($b, $array, $dateTime);
+        $this->beConstructedWith($b, $array, $dateTime, 'UPPER');
         $this->revealArray()->shouldBeLike([
             'array' => [new DateTime('2018-10-30T01:51:33Z'), new DateTime('2018-10-30T01:51:33Z'), 'x'],
             'dateTime' => new DateTime('2018-10-30T01:51:33Z'),
-            'string' => 'x'
+            'string' => 'x',
+            'UpperCaseField' => 'UPPER'
         ]);
         $b = 'z';
         $array[0]->setTime(2, 3, 4);
@@ -29,7 +30,8 @@ class ImmutableValueImplSpec extends ObjectBehavior
         $this->revealArray()->shouldBeLike([
             'array' => [new DateTime('2018-10-30T01:51:33Z'), new DateTime('2018-10-30T01:51:33Z'), 'x'],
             'dateTime' => new DateTime('2018-10-30T01:51:33Z'),
-            'string' => 'x'
+            'string' => 'x',
+            'UpperCaseField' => 'UPPER'
         ]);
     }
 
@@ -38,6 +40,7 @@ class ImmutableValueImplSpec extends ObjectBehavior
         $this->array->shouldBe([]);
         $this->string->shouldBe('');
         $this->dateTime->shouldBeAnInstanceOf(DateTimeInterface::class);
+        $this->UpperCaseField->shouldBe('UPPER');
     }
 
     function it_prevents_mutation_of_the_properties()
@@ -59,9 +62,16 @@ class ImmutableValueImplSpec extends ObjectBehavior
         $this->withString('')->shouldBeLike($this);
     }
 
+    function it_handles_upper_case_properties()
+    {
+        $this->withUpperCaseField('x')->shouldBeAnInstanceOf(ImmutableValueImpl::class);
+        $this->withUpperCaseField('x')->shouldNotBeLike($this);
+        $this->withUpperCaseField('UPPER')->shouldBeLike($this);
+    }
+
     function it_equals_an_instance_with_equal_data()
     {
-        $this->beConstructedWith('', [], new DateTime('2018-10-30T01:51:33Z'));
+        $this->beConstructedWith('', [], new DateTime('2018-10-30T01:51:33Z'), 'UPPER');
         $this->withDateTime(new DateTime('2018-10-30T01:51:33Z'))->equals($this);
     }
 
@@ -74,6 +84,6 @@ class ImmutableValueImplSpec extends ObjectBehavior
 
     function let()
     {
-        $this->beConstructedWith('', [], new DateTime());
+        $this->beConstructedWith('', [], new DateTime(), 'UPPER');
     }
 }
