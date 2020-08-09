@@ -46,7 +46,7 @@ class ShoppingBasket extends SimpleAggregateRoot
     {
         Assert::that(array_sum($this->items))->greaterThan(0, 'Empty baskets cannot be processed');
         Assert::that($this->returningCustomerId)->notNull('Quick checkout is possible only for returning customers');
-        $this->recordThat(new ShoppingBasketWasCheckedOut($this->returningCustomerId));
+        $this->recordThat(new ShoppingBasketWasCheckedOut($this->returningCustomerId ?: ''));
     }
 
     protected function whenItemWasAddedToShoppingBasket(ItemWasAddedToShoppingBasket $event)

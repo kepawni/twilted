@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace Kepawni\Twilted\Basic;
 
+use Kepawni\Twilted\AggregateRoot;
 use Kepawni\Twilted\EntityHistory;
 use Kepawni\Twilted\EntityIdentifier;
 use Kepawni\Twilted\EventSourcedEntity;
@@ -11,7 +12,7 @@ trait ReconstituteFromIsSimple
 
     public static function reconstituteFrom(EntityHistory $history): EventSourcedEntity
     {
-        /** @var EventSourcedEntity $aggregate */
+        /** @var AggregateRoot $aggregate */
         $aggregate = new static($history->getId());
         foreach ($history as $event) {
             $aggregate->apply($event);
