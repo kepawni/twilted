@@ -10,6 +10,7 @@
 Branch | Travis CI status
 -----: | :---
 dev | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=dev)](https://travis-ci.org/kepawni/twilted)
+v1.2.2 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.2.2)](https://travis-ci.org/kepawni/twilted)
 v1.2.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.2.1)](https://travis-ci.org/kepawni/twilted)
 v1.2.0 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.2.0)](https://travis-ci.org/kepawni/twilted)
 v1.1.5 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.1.5)](https://travis-ci.org/kepawni/twilted)
@@ -24,7 +25,6 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 ## PhpSpec results
 
 ```
-
       Kepawni\Twilted\Basic\AggregateUuid
 
   12  ✔ can be created from a UUID string
@@ -60,12 +60,13 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
       Kepawni\Twilted\Basic\TestSample\ImmutableValueImpl
 
   14  ✔ breaks object references
-  36  ✔ exposes the properties
-  43  ✔ prevents mutation of the properties
-  49  ✔ throws exceptions when calling unregistered methods
-  55  ✔ configures a new instance
-  62  ✔ equals an instance with equal data
-  68  ✔ is initializable
+  38  ✔ exposes the properties
+  46  ✔ prevents mutation of the properties
+  52  ✔ throws exceptions when calling unregistered methods
+  58  ✔ configures a new instance
+  65  ✔ handles upper case properties
+  72  ✔ equals an instance with equal data
+  78  ✔ is initializable
 
       Kepawni\Twilted\Basic\TestSample\ShoppingBasket
 
@@ -86,6 +87,6 @@ v1.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.0.
 
 
 8 specs
-35 examples (35 passed)
-249ms
+36 examples (36 passed)
+54ms
 ```

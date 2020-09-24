@@ -1,6 +1,6 @@
 {
     "name": "kepawni/twilted",
-    "version": "v1.2.1",
+    "version": "v1.2.2",
     "description": "A strictly typed PHP 7 CQRS/ES library/framework suited for PhpSpec and striving for highest IDE intellisense comfort",
     "keywords": [
         "CQRS",
@@ -21,6 +21,6 @@
     "require": {
         "beberlei/assert": "^3.2",
         "mathiasverraes/classfunctions": "^1.1",
-        "ramsey/uuid": "^3.9"
+        "ramsey/uuid": "^4.1"
     }
 }
