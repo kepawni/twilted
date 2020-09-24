@@ -10,6 +10,7 @@
 Branch | Travis CI status
 -----: | :---
 dev | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=dev)](https://travis-ci.org/kepawni/twilted)
+v2.0.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v2.0.1)](https://travis-ci.org/kepawni/twilted)
 v2.0.0 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v2.0.0)](https://travis-ci.org/kepawni/twilted)
 v1.2.2 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.2.2)](https://travis-ci.org/kepawni/twilted)
 v1.2.1 | [![Build Status](https://travis-ci.org/kepawni/twilted.svg?branch=v1.2.1)](https://travis-ci.org/kepawni/twilted)

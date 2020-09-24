@@ -1,11 +1,9 @@
 <?php declare(strict_types=1);
 namespace Kepawni\Twilted\Basic;
 
-use InvalidArgumentException;
 use Kepawni\Twilted\EntityIdentifier;
 use Kepawni\Twilted\Foldable;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -21,8 +19,6 @@ class AggregateUuid implements EntityIdentifier
 
     /**
      * @return static
-     * @throws InvalidArgumentException
-     * @throws UnsatisfiedDependencyException
      */
     public static function createRandom(): self
     {
