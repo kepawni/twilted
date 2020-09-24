@@ -1,6 +1,6 @@
 {
     "name": "kepawni/twilted",
-    "version": "v1.2.2",
+    "version": "v2.0.0",
     "description": "A strictly typed PHP 7 CQRS/ES library/framework suited for PhpSpec and striving for highest IDE intellisense comfort",
     "keywords": [
         "CQRS",
